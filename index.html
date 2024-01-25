@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrada de DI</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Entrada de DI</h1>
+    <form id="entradaDIForm">
+        <label for="valorPIS">Valor total PIS:</label>
+        <input type="text" id="valorPIS" required>
+        
+        <label for="valorCOFINS">Valor total COFINS:</label>
+        <input type="text" id="valorCOFINS" required>
+        
+        <label for="valorSISCOMEX">Valor total SISCOMEX:</label>
+        <input type="text" id="valorSISCOMEX" required>
+        
+        <label for="valorNumerario">Valor total NUMERARIO:</label>
+        <input type="text" id="valorNumerario" required>
+        
+        <label for="quantidadeFornecedores">Quantidade de fornecedores:</label>
+        <select id="quantidadeFornecedores">
+            <option value="0">Selecione</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        
+        <div id="fornecedoresFields" style="display: none;">
+            <!-- Campos para os nomes e porcentagens dos fornecedores serão adicionados aqui dinamicamente -->
+        </div>
+        
+        <button type="button" onclick="calcularValores()">Concluir</button>
+        <button type="button" onclick="limparCampos()">Limpar</button>
+    </form>
+    <div id="resultado"></div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
