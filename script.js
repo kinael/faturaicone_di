@@ -1,17 +1,17 @@
 function calcularValores() {
-    var valorPIS = parseFloat(document.getElementById('valorPIS').value);
-    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value);
-    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value);
-    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value);
-    
+    var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
+    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
+    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace('.', '').replace(',', '.'));
+    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace('.', '').replace(',', '.'));
+
     var distribuicoes = [];
     var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
     for (var i = 1; i <= quantidadeFornecedores; i++) {
         var nome = document.getElementById('fornecedorNome' + i).value;
-        var percentual = parseFloat(document.getElementById('fornecedorPercentual' + i).value);
+        var percentual = parseFloat(document.getElementById('fornecedorPercentual' + i).value.replace(',', '.'));
         distribuicoes.push({ nome: nome, percentual: percentual });
     }
-    
+
     var resultadoHTML = '';
     for (var j = 0; j < distribuicoes.length; j++) {
         var distribuicao = distribuicoes[j];
@@ -19,13 +19,13 @@ function calcularValores() {
         var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
         var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
-        
+
         // Formata os valores como moeda com separadores de milhares e vírgula para decimais
         pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        
+
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome">Fornecedor: ' + distribuicao.nome + '</p>';
         resultadoHTML += '<div class="resultado-detalhes">';
