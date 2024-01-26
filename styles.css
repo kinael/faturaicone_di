@@ -1,14 +1,30 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #FAFAFA
+    background-color: #FAFAFA;
     margin: 0;
     padding: 0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.container,
+h1,
+label,
+input[type="text"],
+input[type="checkbox"],
+select,
+button,
+#resultado {
+    animation: fadeIn 1s ease-out;
 }
 
 .container {
     max-width: 600px;
     margin: 20px auto;
-    background-color: #FFFFFF; /* Cor de fundo do formulário */
+    background-color: #FFFFFF;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -46,7 +62,7 @@ select {
 }
 
 button {
-    background-color: #4CAF50;
+    background-color: #1ABC9C;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -63,8 +79,29 @@ button:hover {
     margin-top: 20px;
 }
 
-#resultado p {
-    margin-bottom: 15px;
-    font-size: 16px;
-    color: #333;
+.resultado-item {
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.resultado-item p:first-child {
+    margin-top: 0; 
+}
+
+.resultado-item p:last-child {
+    margin-bottom: 0; 
+}
+
+.fornecedor-nome {
+    font-weight: bold;
+}
+
+.resultado-detalhes {
+    margin-top: 5px;
+}
+
+.resultado-detalhe {
+    margin-bottom: 5px;
 }
