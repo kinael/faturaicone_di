@@ -64,7 +64,7 @@ document.getElementById('quantidadeFornecedores').addEventListener('change', fun
         var percentualInput = document.createElement('input');
         percentualInput.type = 'text';
         percentualInput.id = 'fornecedorPercentual' + i;
-        percentualInput.placeholder = 'Porcentagem do fornecedor ' + i + ' (em %)';
+        percentualInput.placeholder = 'Porcentagem do fornecedor ' + i + ' (em %) (Ex.: 50,30)';
         fornecedoresFields.appendChild(percentualInput);
     }
     fornecedoresFields.style.display = quantidadeFornecedores > 0 ? 'block' : 'none';
