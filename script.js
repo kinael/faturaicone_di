@@ -38,7 +38,6 @@ function calcularValores() {
     document.getElementById('resultado').innerHTML = resultadoHTML;
 }
 
-
 function limparCampos() {
     document.getElementById('valorPIS').value = '';
     document.getElementById('valorCOFINS').value = '';
