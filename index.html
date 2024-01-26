@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="container">
-    <h1>Entrada de DI</h1>
+    <h1>Simulador de Entrada de DI</h1>
     <form id="entradaDIForm">
         <label for="valorPIS">Valor total PIS:</label>
         <input type="text" id="valorPIS" required>
@@ -35,8 +35,8 @@
             <!-- Campos para os nomes e porcentagens dos fornecedores serão adicionados aqui dinamicamente -->
         </div>
         
-        <button type="button" onclick="calcularValores()">Concluir</button>
-        <button type="button" onclick="limparCampos()">Limpar</button>
+        <button type="button" id="calcularbotao" onclick="calcularValores()">Concluir</button>
+        <button type="button" id="limparbotao" onclick="limparCampos()">Limpar</button>
     </form>
     <div id="resultado"></div>
 </div>
