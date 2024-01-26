@@ -1,8 +1,64 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 100%;
+    overflow-y: scroll;
+    padding-bottom: 50px;
     background-color: #FAFAFA;
-    margin: 0;
-    padding: 0;
+    color: #333;
+    animation: fadeIn 1s ease-out;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+.titulopg {
+    background-color: #1ABC9C;
+    color: white;
+    font-size: 2em;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    animation: fadeIn 1s ease-out;
+}
+
+input[type=text], button, select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    animation: fadeIn 1s ease-out;
+}
+
+button {
+    background-color: #1ABC9C;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+    animation: fadeIn 1s ease-out;
+}
+
+button:hover {
+    background-color: #16A085;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
 }
 
 @keyframes fadeIn {
@@ -10,98 +66,14 @@ body {
     to { opacity: 1; }
 }
 
-.container,
-h1,
-label,
-input[type="text"],
-input[type="checkbox"],
-select,
-button,
-#resultado {
+.animate-text, .animate-label, .animated, .simples-nacional-btn {
     animation: fadeIn 1s ease-out;
 }
 
-.container {
-    max-width: 600px;
-    margin: 20px auto;
-    background-color: #FFFFFF;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input[type="text"], input[type="checkbox"], select {
-    margin-bottom: 15px;
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.7 7.7L10 15l7.3-7.3c.6-.6.6-1.5 0-2.1-.6-.6-1.5-.6-2.1 0L10 10.9l-5.2-5.2c-.6-.6-1.5-.6-2.1 0-.6.6-.6 1.5 0 2.1z" fill="%23333"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 14px;
-}
-
-button {
-    background-color: #1ABC9C;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-#resultado {
-    margin-top: 20px;
-}
-
 .resultado-item {
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-}
-
-.resultado-item p:first-child {
-    margin-top: 0; 
-}
-
-.resultado-item p:last-child {
-    margin-bottom: 0; 
-}
-
-.fornecedor-nome {
-    font-weight: bold;
-}
-
-.resultado-detalhes {
-    margin-top: 5px;
-}
-
-.resultado-detalhe {
-    margin-bottom: 5px;
+    border: 2px solid #1ABC9C;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 16px;
+    margin-top: 12px;
 }
