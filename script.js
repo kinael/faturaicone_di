@@ -1,11 +1,9 @@
 function calcularValores() {
-    // Obter os valores inseridos pelo usuário
     var valorPIS = parseFloat(document.getElementById('valorPIS').value);
     var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value);
     var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value);
     var valorNumerario = parseFloat(document.getElementById('valorNumerario').value);
     
-    // Calcular distribuição para cada fornecedor
     var distribuicoes = [];
     var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
     for (var i = 1; i <= quantidadeFornecedores; i++) {
@@ -14,7 +12,6 @@ function calcularValores() {
         distribuicoes.push({ nome: nome, percentual: percentual });
     }
     
-    // Exibir resultado
     var resultadoHTML = '';
     for (var j = 0; j < distribuicoes.length; j++) {
         var distribuicao = distribuicoes[j];
@@ -22,14 +19,25 @@ function calcularValores() {
         var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
         var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
-        resultadoHTML += '<p>Fornecedor ' + distribuicao.nome + ':<br>';
-        resultadoHTML += 'PIS: R$ ' + pisFornecedor.toFixed(2) + '<br>';
-        resultadoHTML += 'COFINS: R$ ' + cofinsFornecedor.toFixed(2) + '<br>';
-        resultadoHTML += 'SISCOMEX: R$ ' + siscomexFornecedor.toFixed(2) + '<br>';
-        resultadoHTML += 'NUMERARIO: R$ ' + numerarioFornecedor.toFixed(2) + '</p>';
+        
+        // Formata os valores como moeda com separadores de milhares e vírgula para decimais
+        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        
+        resultadoHTML += '<div class="resultado-item">';
+        resultadoHTML += '<p class="fornecedor-nome">Fornecedor: ' + distribuicao.nome + '</p>';
+        resultadoHTML += '<div class="resultado-detalhes">';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> PIS: </b> ' + pisFornecedor + '</p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + '</p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + '</p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + '</p>';
+        resultadoHTML += '</div></div>';
     }
     document.getElementById('resultado').innerHTML = resultadoHTML;
 }
+
 
 function limparCampos() {
     document.getElementById('valorPIS').value = '';
@@ -44,7 +52,7 @@ function limparCampos() {
 // Mostrar campos para os fornecedores selecionados
 document.getElementById('quantidadeFornecedores').addEventListener('change', function() {
     var fornecedoresFields = document.getElementById('fornecedoresFields');
-    fornecedoresFields.innerHTML = ''; // Limpar campos anteriores
+    fornecedoresFields.innerHTML = '';
     var quantidadeFornecedores = parseInt(this.value);
     for (var i = 1; i <= quantidadeFornecedores; i++) {
         var nomeInput = document.createElement('input');
