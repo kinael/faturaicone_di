@@ -27,12 +27,12 @@ function calcularValores() {
         numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
         resultadoHTML += '<div class="resultado-item">';
-        resultadoHTML += '<p class="fornecedor-nome">Fornecedor: ' + distribuicao.nome + '</p>';
+        resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
         resultadoHTML += '<div class="resultado-detalhes">';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> PIS: </b> ' + pisFornecedor + '</p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + '</p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + '</p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + '</p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> PIS: </b> ' + pisFornecedor + ' </p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + ' </p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + ' </p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + ' </p>';
         resultadoHTML += '</div></div>';
     }
     document.getElementById('resultado').innerHTML = resultadoHTML;
@@ -49,7 +49,6 @@ function limparCampos() {
     document.getElementById('resultado').innerHTML = '';
 }
 
-// Mostrar campos para os fornecedores selecionados
 document.getElementById('quantidadeFornecedores').addEventListener('change', function() {
     var fornecedoresFields = document.getElementById('fornecedoresFields');
     fornecedoresFields.innerHTML = '';
