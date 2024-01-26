@@ -20,7 +20,6 @@ function calcularValores() {
         var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
 
-        // Formata os valores como moeda com separadores de milhares e vírgula para decimais
         pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
