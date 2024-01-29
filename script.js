@@ -5,6 +5,7 @@ function calcularValores() {
     var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
     var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace('.', '').replace(',', '.'));
     var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace('.', '').replace(',', '.'));
+    var valorVariacao = parseFloat(document.getElementById('valorVariacao').value.replace('.', '').replace(',', '.'));
 
     var distribuicoes = [];
     var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
@@ -21,11 +22,14 @@ function calcularValores() {
         var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
         var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
+        var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
+
 
         pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
@@ -34,6 +38,7 @@ function calcularValores() {
         resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + ' </p>';
         resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + ' </p>';
         resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + ' </p>';
+        resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
         resultadoHTML += '</div></div>';
     }
     document.getElementById('resultado').innerHTML = resultadoHTML;
@@ -44,6 +49,7 @@ function limparCampos() {
     document.getElementById('valorCOFINS').value = '';
     document.getElementById('valorSISCOMEX').value = '';
     document.getElementById('valorNumerario').value = '';
+    document.getElementById('valorVariacao').value = '';
     document.getElementById('quantidadeFornecedores').value = '0';
     document.getElementById('fornecedoresFields').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
