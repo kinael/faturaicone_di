@@ -1,3 +1,5 @@
+var modoEscuroAtivado = false;
+
 function calcularValores() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
     var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
@@ -65,4 +67,34 @@ document.getElementById('quantidadeFornecedores').addEventListener('change', fun
         fornecedoresFields.appendChild(percentualInput);
     }
     fornecedoresFields.style.display = quantidadeFornecedores > 0 ? 'block' : 'none';
+});
+
+function carregarModoEscuro() {
+  var modoEscuroSalvo = localStorage.getItem('modoEscuro');
+  if (modoEscuroSalvo !== null) {
+    modoEscuroAtivado = JSON.parse(modoEscuroSalvo);
+    aplicarModoEscuro();
+  }
+}
+
+function salvarModoEscuro() {
+  localStorage.setItem('modoEscuro', modoEscuroAtivado);
+}
+
+function aplicarModoEscuro() {
+  var body = document.body;
+  body.classList.toggle('dark-mode', modoEscuroAtivado);
+
+  var modoEscuroBtn = document.querySelector('.modo-escuro-btn');
+  modoEscuroBtn.textContent = modoEscuroAtivado ? 'Modo Claro' : 'Modo Escuro';
+}
+
+function alternarModo() {
+  modoEscuroAtivado = !modoEscuroAtivado;
+  salvarModoEscuro();
+  aplicarModoEscuro();
+}
+
+document.addEventListener('DOMContentLoaded', (event) => {
+  carregarModoEscuro();
 });
