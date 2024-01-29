@@ -8,6 +8,19 @@ body {
     animation: fadeIn 1s ease-out;
 }
 
+.imagens {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 30px;
+}
+
+.imagens img {
+  margin: 0 30px;
+  max-width: 100px;
+  height: auto;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
