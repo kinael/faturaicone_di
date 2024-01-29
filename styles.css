@@ -22,6 +22,10 @@ body {
   height: auto;
 }
 
+#iconimg {
+    margin-top: -7px;
+}
+
 .container {
     max-width: 600px;
     margin: 0 auto;
