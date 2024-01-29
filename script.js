@@ -15,32 +15,32 @@ function calcularValores() {
         distribuicoes.push({ nome: nome, percentual: percentual });
     }
 
-    var resultadoHTML = '';
-    for (var j = 0; j < distribuicoes.length; j++) {
-        var distribuicao = distribuicoes[j];
-        var pisFornecedor = (distribuicao.percentual / 100) * valorPIS;
-        var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
-        var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
-        var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
-        var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
+var resultadoHTML = '';
+for (var j = 0; j < distribuicoes.length; j++) {
+    var distribuicao = distribuicoes[j];
+    var pisFornecedor = (distribuicao.percentual / 100) * valorPIS;
+    var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
+    var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
+    var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
+    var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao; // Mover esta linha aqui
 
+    pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    resultadoHTML += '<div class="resultado-item">';
+    resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
+    resultadoHTML += '<div class="resultado-detalhes">';
+    resultadoHTML += '<p class="resultado-detalhe"> <b> PIS: </b> ' + pisFornecedor + ' </p>';
+    resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + ' </p>';
+    resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + ' </p>';
+    resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + ' </p>';
+    resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
+    resultadoHTML += '</div></div>';
+}
 
-        resultadoHTML += '<div class="resultado-item">';
-        resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
-        resultadoHTML += '<div class="resultado-detalhes">';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> PIS: </b> ' + pisFornecedor + ' </p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> COFINS: </b> ' + cofinsFornecedor + ' </p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> SISCOMEX: </b> ' + siscomexFornecedor + ' </p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> NUMERARIO: </b> ' + numerarioFornecedor + ' </p>';
-        resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
-        resultadoHTML += '</div></div>';
-    }
     document.getElementById('resultado').innerHTML = resultadoHTML;
 }
 
