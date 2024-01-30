@@ -43,6 +43,8 @@ function exportarParaExcel() {
     var wb = XLSX.utils.book_new();
     var wsDados = XLSX.utils.json_to_sheet(dados);
     XLSX.utils.book_append_sheet(wb, wsDados, 'Resultados dos cálculos');
+    
+    wsDados['!cols'] = [{ wpx: 200 }, { wpx: 120 }, { wpx: 110 }, { wpx: 110 }, { wpx: 110 }, { wpx: 110 }, { wpx: 110 }];
 
     var wsResumo = XLSX.utils.json_to_sheet([{
         'Total PIS': valorPIS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
@@ -53,6 +55,9 @@ function exportarParaExcel() {
         'Qtd. Fornecedores': quantidadeFornecedores
     }]);
     XLSX.utils.book_append_sheet(wb, wsResumo, 'Informações da entrada');
+
+    wsResumo['!cols'] = [{ wpx: 110 }, { wpx: 110 }, { wpx: 110 }, { wpx: 110 }, { wpx: 110 }, { wpx: 160 }];
+
 
     var nomeDoArquivo = 'Resultados_CalculoEntradaDI.xlsx';
     XLSX.writeFile(wb, nomeDoArquivo);
