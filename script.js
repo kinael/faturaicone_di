@@ -31,7 +31,7 @@ function exportarParaExcel() {
 
         dados.push({
             'Nome do fornecedor': nomeFornecedor,
-            'Percentual': percentualFornecedor + '%',
+            'Percentual (%)': percentualFornecedor + '%',
             'PIS': pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             'COFINS': cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
             'SISCOMEX': siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
@@ -45,12 +45,12 @@ function exportarParaExcel() {
     XLSX.utils.book_append_sheet(wb, wsDados, 'Resultados dos cálculos');
 
     var wsResumo = XLSX.utils.json_to_sheet([{
-        'Valor total PIS': valorPIS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        'Valor total COFINS': valorCOFINS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        'Valor total SISCOMEX': valorSISCOMEX.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        'Valor total NUMERARIO': valorNumerario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        'Valor total VARIAÇÃO': valorVariacao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
-        'Quantidade de fornecedores': quantidadeFornecedores
+        'Total PIS': valorPIS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Total COFINS': valorCOFINS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Total SISCOMEX': valorSISCOMEX.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Total NUMERARIO': valorNumerario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Total VARIAÇÃO': valorVariacao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Qtd. Fornecedores': quantidadeFornecedores
     }]);
     XLSX.utils.book_append_sheet(wb, wsResumo, 'Informações da entrada');
 
