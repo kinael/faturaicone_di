@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-     <link rel="shortcut icon" type="imagex/png" href="https://i.imgur.com/9A9knkK.png">
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ENM - Cálculo de Impostos para Entrada de DI</title>
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="dark-mode.css" id="dark-mode-stylesheet">
+    <link rel="shortcut icon" type="imagex/png" href="https://i.imgur.com/9A9knkK.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENM - Cálculo de Impostos para Entrada de DI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="dark-mode.css" id="dark-mode-stylesheet">
 </head>
 <body>
 
@@ -14,7 +14,7 @@
     <img id="iconimg" src="https://i.imgur.com/9A9knkK.png" />
     <img src="https://i.imgur.com/O7MOBCK.png" />
 </div>
-     
+
 <div class="container">
     <h1 class="titulopg animate-text">Cálculo de Impostos - Entrada de DI</h1>
     <form id="entradaDIForm">
@@ -49,14 +49,18 @@
         
         <button type="button" id="calcularbotao" onclick="calcularValores()" class="animate-text">Concluir</button>
         <button type="button" id="limparbotao" onclick="limparCampos()" class="animate-text">Limpar</button>
+        <button type="button" id="exportarExcelButton" onclick="exportarParaExcel()" style="display: none;" class="animate-text">Exportar para Excel</button>
     </form>
     <div id="resultado"></div>
 </div>
+
 
 <div class="botao-modo-escuro">
   <button class="modo-escuro-btn" onclick="alternarModo()">Modo Escuro</button>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-style/0.12.13/dist/xlsx.full.min.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
