@@ -1,5 +1,58 @@
 var modoEscuroAtivado = false;
 
+function exportarParaExcel() {
+    var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
+    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
+    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace('.', '').replace(',', '.'));
+    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace('.', '').replace(',', '.'));
+    var valorVariacao = parseFloat(document.getElementById('valorVariacao').value.replace('.', '').replace(',', '.'));
+    var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
+
+    if (isNaN(valorPIS) || isNaN(valorCOFINS) || isNaN(valorSISCOMEX) || isNaN(valorNumerario) || isNaN(valorVariacao) || quantidadeFornecedores === 0) {
+        alert('Preencha todos os campos corretamente antes de exportar para o Excel.');
+        return;
+    }
+
+    var dados = [];
+    for (var i = 1; i <= quantidadeFornecedores; i++) {
+        var nomeFornecedor = document.getElementById('fornecedorNome' + i).value;
+        var percentualFornecedor = parseFloat(document.getElementById('fornecedorPercentual' + i).value.replace(',', '.'));
+
+        var pisFornecedor = (percentualFornecedor / 100) * valorPIS;
+        var cofinsFornecedor = (percentualFornecedor / 100) * valorCOFINS;
+        var siscomexFornecedor = (percentualFornecedor / 100) * valorSISCOMEX;
+        var numerarioFornecedor = (percentualFornecedor / 100) * valorNumerario;
+        var variacaoFornecedor = (percentualFornecedor / 100) * valorVariacao;
+
+        dados.push({
+            'Nome do fornecedor': nomeFornecedor,
+            'Percentual': percentualFornecedor + '%',
+            'PIS': pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            'COFINS': cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            'SISCOMEX': siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            'NUMERARIO': numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+            'VARIAÇÃO': variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+        });
+    }
+
+    var wb = XLSX.utils.book_new();
+    var wsDados = XLSX.utils.json_to_sheet(dados);
+    XLSX.utils.book_append_sheet(wb, wsDados, 'Dados dos fornecedores');
+
+    var wsResumo = XLSX.utils.json_to_sheet([{
+        'Valor total PIS': valorPIS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Valor total COFINS': valorCOFINS.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Valor total SISCOMEX': valorSISCOMEX.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Valor total NUMERARIO': valorNumerario.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Valor total VARIAÇÃO': valorVariacao.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }),
+        'Quantidade de fornecedores': quantidadeFornecedores
+    }]);
+    XLSX.utils.book_append_sheet(wb, wsResumo, 'Resumo');
+
+    var nomeDoArquivo = 'Resultados_CalculoEntradaDI.xlsx';
+    XLSX.writeFile(wb, nomeDoArquivo);
+}
+
 function calcularValores() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
     var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
@@ -22,7 +75,7 @@ for (var j = 0; j < distribuicoes.length; j++) {
     var cofinsFornecedor = (distribuicao.percentual / 100) * valorCOFINS;
     var siscomexFornecedor = (distribuicao.percentual / 100) * valorSISCOMEX;
     var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
-    var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao; // Mover esta linha aqui
+    var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
 
     pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -42,6 +95,27 @@ for (var j = 0; j < distribuicoes.length; j++) {
 }
 
     document.getElementById('resultado').innerHTML = resultadoHTML;
+
+ if (validarInformacoes()) {
+        document.getElementById('exportarExcelButton').style.display = 'block';
+    }
+
+}
+
+function validarInformacoes() {
+    var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
+    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
+    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace('.', '').replace(',', '.'));
+    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace('.', '').replace(',', '.'));
+    var valorVariacao = parseFloat(document.getElementById('valorVariacao').value.replace('.', '').replace(',', '.'));
+    var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
+
+    if (isNaN(valorPIS) || isNaN(valorCOFINS) || isNaN(valorSISCOMEX) || isNaN(valorNumerario) || isNaN(valorVariacao) || quantidadeFornecedores === 0) {
+        alert('Preencha todos os campos corretamente antes de exportar para o Excel.');
+        return false;
+    }
+
+    return true;
 }
 
 function limparCampos() {
@@ -53,6 +127,8 @@ function limparCampos() {
     document.getElementById('quantidadeFornecedores').value = '0';
     document.getElementById('fornecedoresFields').innerHTML = '';
     document.getElementById('resultado').innerHTML = '';
+
+    document.getElementById('exportarExcelButton').style.display = 'none';
 }
 
 document.getElementById('quantidadeFornecedores').addEventListener('change', function() {
