@@ -111,7 +111,7 @@ function validarInformacoes() {
     var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
 
     if (isNaN(valorPIS) || isNaN(valorCOFINS) || isNaN(valorSISCOMEX) || isNaN(valorNumerario) || isNaN(valorVariacao) || quantidadeFornecedores === 0) {
-        alert('Preencha todos os campos corretamente antes de exportar para o Excel.');
+        alert('Preencha todos os campos corretamente.');
         return false;
     }
 
