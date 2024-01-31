@@ -1,4 +1,31 @@
 var modoEscuroAtivado = false;
+var ultimoCalculo = null;
+
+function exibirModal() {
+    var modal = document.getElementById('modal');
+    var resultadoAnterior = document.getElementById('resultadoAnterior');
+
+    if (ultimoCalculo) {
+        resultadoAnterior.innerHTML = ultimoCalculo;
+    } else {
+        resultadoAnterior.innerHTML = 'Você não realizou nenhum cálculo ainda.';
+    }
+
+    modal.style.display = 'block';
+}
+
+
+function fecharModal() {
+    var modal = document.getElementById('modal');
+    modal.style.display = 'none';
+}
+
+function exibirResultadoAnterior() {
+  if (ultimoCalculo) {
+    document.getElementById('resultadoAnterior').innerHTML = ultimoCalculo;
+  }
+}
+
 
 function exportarParaExcel() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
@@ -91,16 +118,12 @@ function calcularValores() {
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
         var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
 
-        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        pisFornecedor = pisFornecedor.toFixed(3);
+        cofinsFornecedor = cofinsFornecedor.toFixed(3);
+        siscomexFornecedor = siscomexFornecedor.toFixed(3);
+        numerarioFornecedor = numerarioFornecedor.toFixed(3);
+        variacaoFornecedor = variacaoFornecedor.toFixed(3);
 
-    if (isNaN(valorPIS) || isNaN(valorCOFINS) || isNaN(valorSISCOMEX) || isNaN(valorNumerario) || isNaN(valorVariacao) || quantidadeFornecedores === 0) {
-        alert('Preencha todos os campos corretamente.');
-	return false;
-    } else {
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
         resultadoHTML += '<div class="resultado-detalhes">';
@@ -111,7 +134,7 @@ function calcularValores() {
         resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
         resultadoHTML += '</div></div>';
     }
-}
+    ultimoCalculo = resultadoHTML;
 
     document.getElementById('resultado').innerHTML = resultadoHTML;
 
@@ -119,6 +142,7 @@ function calcularValores() {
         document.getElementById('exportarExcelButton').style.display = 'block';
     }
 }
+
 
 function validarInformacoes() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
