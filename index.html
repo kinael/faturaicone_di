@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -58,6 +59,18 @@
 <div class="botao-modo-escuro">
   <button class="modo-escuro-btn" onclick="alternarModo()">Modo Escuro</button>
 </div>
+
+<button type="button" id="recuperarCalculoBtn" onclick="exibirModal()">Último cálculo realizado</button>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="fecharModal()">&times;</span>
+    <p> <b> Último cálculo realizado: </b> </p>
+    <div id="resultadoAnterior"></div>
+  </div>
+</div>
+
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx-style/0.12.13/dist/xlsx.full.min.js"></script>
