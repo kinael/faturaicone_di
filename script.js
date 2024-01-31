@@ -8,7 +8,7 @@ function exibirModal() {
     if (ultimoCalculo) {
         resultadoAnterior.innerHTML = ultimoCalculo;
     } else {
-        resultadoAnterior.innerHTML = 'Você não realizou nenhum cálculo ainda.';
+        resultadoAnterior.innerHTML = 'Você ainda não realizou nenhum cálculo.';
     }
 
     modal.style.display = 'block';
