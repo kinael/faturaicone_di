@@ -91,11 +91,11 @@ function exportarParaExcel() {
 }
 
 function calcularValores() {
-    var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
-    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
-    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace('.', '').replace(',', '.'));
-    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace('.', '').replace(',', '.'));
-    var valorVariacao = parseFloat(document.getElementById('valorVariacao').value.replace('.', '').replace(',', '.'));
+    var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace(',', '.'));
+    var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace(',', '.'));
+    var valorSISCOMEX = parseFloat(document.getElementById('valorSISCOMEX').value.replace(',', '.'));
+    var valorNumerario = parseFloat(document.getElementById('valorNumerario').value.replace(',', '.'));
+    var valorVariacao = parseFloat(document.getElementById('valorVariacao').value.replace(',', '.'));
 
     var distribuicoes = [];
     var quantidadeFornecedores = parseInt(document.getElementById('quantidadeFornecedores').value);
@@ -118,11 +118,11 @@ function calcularValores() {
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
         var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
 
-        pisFornecedor = pisFornecedor.toFixed(3);
-        cofinsFornecedor = cofinsFornecedor.toFixed(3);
-        siscomexFornecedor = siscomexFornecedor.toFixed(3);
-        numerarioFornecedor = numerarioFornecedor.toFixed(3);
-        variacaoFornecedor = variacaoFornecedor.toFixed(3);
+        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
 
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
