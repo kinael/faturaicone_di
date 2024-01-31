@@ -143,7 +143,6 @@ function calcularValores() {
     }
 }
 
-
 function validarInformacoes() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
     var valorCOFINS = parseFloat(document.getElementById('valorCOFINS').value.replace('.', '').replace(',', '.'));
