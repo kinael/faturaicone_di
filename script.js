@@ -97,6 +97,10 @@ function calcularValores() {
         numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
+    if (isNaN(valorPIS) || isNaN(valorCOFINS) || isNaN(valorSISCOMEX) || isNaN(valorNumerario) || isNaN(valorVariacao) || quantidadeFornecedores === 0) {
+        alert('Preencha todos os campos corretamente.');
+	return false;
+    } else {
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
         resultadoHTML += '<div class="resultado-detalhes">';
@@ -107,6 +111,7 @@ function calcularValores() {
         resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
         resultadoHTML += '</div></div>';
     }
+}
 
     document.getElementById('resultado').innerHTML = resultadoHTML;
 
