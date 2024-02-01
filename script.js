@@ -1,6 +1,20 @@
 var modoEscuroAtivado = false;
 var ultimoCalculo = null;
 
+function carregarUltimoCalculo() {
+    var ultimoCalculoArmazenado = localStorage.getItem('ultimoCalculo');
+    if (ultimoCalculoArmazenado !== null) {
+        ultimoCalculo = ultimoCalculoArmazenado;
+        exibirResultadoAnterior();
+    }
+}
+
+function salvarUltimoCalculo(resultadoHTML) {
+    ultimoCalculo = resultadoHTML;
+    localStorage.setItem('ultimoCalculo', resultadoHTML);
+}
+
+
 function exibirModal() {
     var modal = document.getElementById('modal');
     var resultadoAnterior = document.getElementById('resultadoAnterior');
@@ -8,7 +22,7 @@ function exibirModal() {
     if (ultimoCalculo) {
         resultadoAnterior.innerHTML = ultimoCalculo;
     } else {
-        resultadoAnterior.innerHTML = 'Você ainda não realizou nenhum cálculo.';
+        resultadoAnterior.innerHTML = 'Você não realizou nenhum cálculo ainda.';
     }
 
     modal.style.display = 'block';
@@ -134,7 +148,8 @@ function calcularValores() {
         resultadoHTML += '<p class="resultado-detalhe"> <b> VARIAÇÃO: </b> ' + variacaoFornecedor + ' </p>';
         resultadoHTML += '</div></div>';
     }
-    ultimoCalculo = resultadoHTML;
+
+    salvarUltimoCalculo(resultadoHTML); // Salvar o resultado atual no localStorage
 
     document.getElementById('resultado').innerHTML = resultadoHTML;
 
@@ -142,6 +157,9 @@ function calcularValores() {
         document.getElementById('exportarExcelButton').style.display = 'block';
     }
 }
+
+
+
 
 function validarInformacoes() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
@@ -233,4 +251,5 @@ function alternarModo() {
 
 document.addEventListener('DOMContentLoaded', (event) => {
   carregarModoEscuro();
+    carregarUltimoCalculo(); 
 });
