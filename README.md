@@ -1,4 +1,4 @@
-# Cálculo de Impostos - Entrada de DI
+# Cálculo de Impostos para Entrada de DI
 
 **Descrição:**
 - **Propósito:** Ferramenta desenvolvida para calcular e distribuir corretamente os impostos em uma entrada de importação, quando há mais de um fornecedor envolvido na transação (entre 2 e 5 fornecedores).
