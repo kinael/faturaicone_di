@@ -1,6 +1,16 @@
 var modoEscuroAtivado = false;
 var ultimoCalculo = null;
 
+function exibirModalSobre() {
+    var modalSobre = document.getElementById('modalSobre');
+    modalSobre.style.display = 'block';
+}
+
+function fecharModalSobre() {
+    var modalSobre = document.getElementById('modalSobre');
+    modalSobre.style.display = 'none';
+}
+
 function carregarUltimoCalculo() {
     var ultimoCalculoArmazenado = localStorage.getItem('ultimoCalculo');
     if (ultimoCalculoArmazenado !== null) {
