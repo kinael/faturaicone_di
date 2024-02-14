@@ -141,11 +141,11 @@ function calcularValores() {
         var numerarioFornecedor = (distribuicao.percentual / 100) * valorNumerario;
         var variacaoFornecedor = (distribuicao.percentual / 100) * valorVariacao;
 
-        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+        pisFornecedor = pisFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        cofinsFornecedor = cofinsFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        siscomexFornecedor = siscomexFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        numerarioFornecedor = numerarioFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        variacaoFornecedor = variacaoFornecedor.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
         resultadoHTML += '<div class="resultado-item">';
         resultadoHTML += '<p class="fornecedor-nome"> <b> Fornecedor: ' + distribuicao.nome + '  </b> </p>';
