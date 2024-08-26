@@ -1,5 +1,69 @@
 var modoEscuroAtivado = false;
 var ultimoCalculo = null;
+let currentInput = '';
+    let operator = null;
+    let firstOperand = null;
+
+    function appendNumber(number) {
+        if (currentInput === '0' && number !== '.') {
+            currentInput = number;
+        } else {
+            currentInput += number;
+        }
+        updateScreen();
+    }
+
+    function setOperator(op) {
+        if (operator !== null) {
+            calculateResult();
+        }
+        firstOperand = parseFloat(currentInput);
+        operator = op;
+        currentInput = '';
+    }
+
+    function calculateResult() {
+        if (operator === null || currentInput === '') return;
+        const secondOperand = parseFloat(currentInput);
+        let result;
+        switch (operator) {
+            case '+':
+                result = firstOperand + secondOperand;
+                break;
+            case '-':
+                result = firstOperand - secondOperand;
+                break;
+            case '*':
+                result = firstOperand * secondOperand;
+                break;
+            case '/':
+                result = firstOperand / secondOperand;
+                break;
+            default:
+                return;
+        }
+        currentInput = result.toString();
+        operator = null;
+        firstOperand = null;
+        updateScreen();
+    }
+
+    function clearScreen() {
+        currentInput = '';
+        operator = null;
+        firstOperand = null;
+        updateScreen();
+    }
+
+    function updateScreen() {
+        document.getElementById('calculator-screen').innerText = currentInput || '0';
+    }
+
+    function toggleCalculator() {
+        const calculator = document.getElementById('calculator');
+        const isVisible = calculator.style.display === 'block';
+        calculator.style.display = isVisible ? 'none' : 'block';
+    }
 
 function exibirModalSobre() {
     var modalSobre = document.getElementById('modalSobre');
