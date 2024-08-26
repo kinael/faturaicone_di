@@ -222,7 +222,7 @@ function calcularValores() {
         resultadoHTML += '</div></div>';
     }
 
-    salvarUltimoCalculo(resultadoHTML); // Salvar o resultado atual no localStorage
+    salvarUltimoCalculo(resultadoHTML);
 
     document.getElementById('resultado').innerHTML = resultadoHTML;
 
@@ -230,9 +230,6 @@ function calcularValores() {
         document.getElementById('exportarExcelButton').style.display = 'block';
     }
 }
-
-
-
 
 function validarInformacoes() {
     var valorPIS = parseFloat(document.getElementById('valorPIS').value.replace('.', '').replace(',', '.'));
