@@ -4,6 +4,7 @@ let currentInput = '';
     let operator = null;
     let firstOperand = null;
 
+
     function appendNumber(number) {
         if (currentInput === '0' && number !== '.') {
             currentInput = number;
